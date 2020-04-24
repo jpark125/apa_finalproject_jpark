@@ -20,7 +20,7 @@ This project consists of three steps with corresponding three py files.
    b) Use your API key value to get the data.
 
 3. COVID-19 Data Cleaning
-  1) The New York Times COVID-19 data is written daily. I obtained a state-and-county-specified dataset. [Raw CSV](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv)
+  1) The New York Times COVID-19 data is written daily. I obtained a state-and-county-specified dataset. [Raw CSV](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv) 
   2) Open a CSV file that is in the COVID data zip file.
   3) Make two separate columns for the state and the county FIPS codes by slicing 5-digit FIPS codes, to merge the dataset with other datasets later: ‘fps_stt’ for state FIPS codes and ‘fps_cty’ for county FIPS codes.   
   4) To sum up the total cases and deaths by month, extracting only the months from the date column. In this project, I used the total cases and death only, but it will be also useful to analyze the data by month to see the spreading rate. It creates a new column ‘month_a’ indicating months as abbreviated names.
