@@ -3,17 +3,17 @@ import csv
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Read the us county dataset
 csvname = 'us-counties.csv'
 covid = pd.read_csv(csvname, dtype=str)
 
-#split the fips code into state and county for merge
+# Split the fips code into state and county for merge
 (start, stop, step) = (0,2,1)
 covid['fips']=covid['fips'].astype(str)
 covid['fps_stt'] = covid['fips'].str.slice(start, stop, step)
 covid['fps_cty'] = covid['fips'].str.slice(-3)
 
-
-#split year, month, and day to sort
+# Split year, month, and day to sort
 covid['month'] = covid['date'].str.slice(5,7)
 month = covid['month']
 (jan, feb, mar, apr) = ('01', '02','03','04')
@@ -21,7 +21,6 @@ covid.loc[month==jan, 'month_a'] = 'Jan'
 covid.loc[month==feb, 'month_a'] = 'Feb'
 covid.loc[month==mar, 'month_a'] = 'Mar'
 covid.loc[month==apr, 'month_a'] = 'Apr'
-
 
 # State Fipscode Dictionary Building
 df = covid[['fps_stt', 'state']]
@@ -33,7 +32,6 @@ df['state'] = df['state'].astype(str)
 df['state'] = df['state'].str.lower()
 state_fps = df.set_index('state')['fps_stt'].to_dict()
 print(state_fps)
-
 
 # Making a function for slicing the state data and sum up by months
 def daily_by_state(state):
@@ -58,9 +56,7 @@ statename='washington'
 daily_by_state(statename)
 monthly_by_county(statename)
 
-
-
-#Total cases and deaths calculation
+# Total cases and deaths calculation
 def total_cases_deaths(filename):
     df = pd.read_csv(filename)
     df['cases'] = df['cases'].astype(float)
@@ -79,7 +75,7 @@ state_covid = total_cases_deaths(filename)
 state_covid.to_csv(newfilename)
 
 
-#Merging with the population and the education data
+# Merging with the population and the education data
 pop_df = pd.read_csv('53_census-pop-data.csv')
 pop_df = pop_df[pop_df['DATE_CODE']==12]
 pop_df = pop_df[['county', 'POP', 'DENSITY']]
