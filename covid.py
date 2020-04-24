@@ -1,18 +1,10 @@
 import pandas as pd
 import csv
-import io
-import zipfile 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-zipname = 'covid-19-data-master.zip'
 csvname = 'us-counties.csv'
-
-zip_object = zipfile.ZipFile(zipname)
-inp_byte = zip_object.open(csvname)
-inp_handle=io.TextIOWrapper(inp_byte)
-
-covid = pd.read_csv(inp_handle, dtype=str)
+covid = pd.read_csv(csvname, dtype=str)
 
 #split the fips code into state and county for merge
 (start, stop, step) = (0,2,1)
