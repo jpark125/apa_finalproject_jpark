@@ -5,7 +5,7 @@ import zipfile
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-zipname = 'covid-19-data.zip'
+zipname = 'covid-19-data-master.zip'
 csvname = 'us-counties.csv'
 
 zip_object = zipfile.ZipFile(zipname)
