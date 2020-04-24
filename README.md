@@ -6,20 +6,20 @@ The main idea of this project to see which factor can explain the state of the s
 ### Building Codes
 This project consists of three steps with corresponding three py files.
 
-1. Population Data Obtainment
+# 1. Population Data Obtainment
  1) The ‘population.py’ file contains codes for obtaining population data as a CSV file from the census API. Since the file has the population data for 10 years from 2010 to 2019, the file will be trimmed for analysis at the final stage, right before merging.
  2) The population data is set to be collected by the state, based on counties. Therefore, to obtain the data for a certain state, the user should know the state fips code and put it into the codes manually.
    a) Put the state FIPS code in the variables ‘in_clause’ and ‘popfilename.’
    b) Use your API key value to get the data.
 
-2. Education Attainment Level Data Obtainment
+# 2. Education Attainment Level Data Obtainment
  1) The ‘attainment.py’ file has codes for obtaining the education attainment level data of county residents as a CSV file from the census API. The same data mining was done in the previous assignment G18. The ratio of highly educated people with more than a college degree divided by people with less than high school graduation will be merged with the COVID-19 data.
  2)	To get a dataset, the file ‘census-variable.csv’ is needed first to get keys for calling API.
  3) Same with the population data, the educational attainment data is set to be collected by the state. Therefore, the fips code of the state in interest should be put manually as well as the population data.
    a) Put the state FIPS code in the variables ‘in_clause’, the filename of ‘attain.to_csv’ command, and the variable ‘edufilename.’
    b) Use your API key value to get the data.
 
-3. COVID-19 Data Cleaning
+# 3. COVID-19 Data Cleaning
   1) The New York Times COVID-19 data is written daily. I obtained a state-and-county-specified dataset. [ [U.S. Data](us.csv) ([Raw CSV](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv)) | [U.S. State-Level Data](us-states.csv) ([Raw CSV](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv)) | [U.S. County-Level Data](us-counties.csv) ([Raw CSV](https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv)) ]
   2) Open a CSV file that is in the COVID data zip file.
   3) Make two separate columns for the state and the county FIPS codes by slicing 5-digit FIPS codes, to merge the dataset with other datasets later: ‘fps_stt’ for state FIPS codes and ‘fps_cty’ for county FIPS codes.   
